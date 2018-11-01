@@ -1,0 +1,22 @@
+<!-- % extends 'base.html' % tells Jinja that this template should replace the blocks from the base template.
+     All the rendered content must appear inside % block %  tags that override blocks from the base template.
+     base.html 的内容会替换到这里，所有需要渲染的内容都要包含在 % block % 标签内 -->
+{% extends 'base.html' %}
+
+<!-- A useful pattern used here is to place % block title % inside % block header % 。This will set the title block
+ and then output the value of it into the header block, so that both the window and page share the same title without writing it twice.
+ 嵌套的 block 块，会从最内层开始渲染，title 和 header 都会被渲染成相应的内容，这样的话就不需要重写两次。-->
+{% block header %}
+    <h1>{% block title %} Register {% endblock %}</h1>
+
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+        <label for="username">Username</label>
+        <input name="username" id="username" required>
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" required>
+        <input type="submit" value="Register">
+    </form>
+{% endblock %}

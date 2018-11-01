@@ -1,0 +1,18 @@
+[
+  "tests/test_blog.py::test_index",
+  "tests/test_blog.py::test_login_requird[/create]",
+  "tests/test_blog.py::test_login_requird[/1/update]",
+  "tests/test_blog.py::test_login_requird[/1/delete]",
+  "tests/test_blog.py::test_author_required",
+  "tests/test_blog.py::test_exists_required[/2/update]",
+  "tests/test_blog.py::test_exists_required[/2/delete]",
+  "tests/test_blog.py::test_create",
+  "tests/test_blog.py::test_update",
+  "tests/test_blog.py::test_create_update_validate[/create]",
+  "tests/test_blog.py::test_create_update_validate[/1/update]",
+  "tests/test_blog.py::test_delet",
+  "tests/test_db.py::test_get_close_db",
+  "tests/test_db.py::test_init_db_command",
+  "tests/test_factory.py::test_config",
+  "tests/test_factory.py::test_hello"
+]

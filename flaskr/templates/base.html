@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!-- 基础模板，其他所有的模板都有基础模板的布局，但是有不同的内容。 其它模板引用基础模板，然后替换掉相应的内容。基础模板不会直接被渲染的，因为不完整 -->
+<!-- 两个大括号里面是表达式，在渲染的时候会生成相应的内容，大括号加百分号代表着控制流程 -->
+
+<!-- There are three blocks defined here that will be overridden in the other templates -->
+<title>{% block title %}{% endblock %} - Flaskr</title>
+
+<!--  url_for() is also automatically available, and is used to generate URLs to views instead of writing them out manually -->
+<link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+
+<nav>
+    <h1>Flaskr</h1>
+    <ul>
+<!-- g 是自动生效的， 我们可以读取被 load_logged_in_user 所设置的 g.user ，同样 url_for() 也是有效的 -->
+        {% if g.user %}
+            <li><span>{{ g.user['username']}}</span></li>
+            <li><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
+        {% else %}
+            <li><a href="{{ url_for('auth.register')}}">Register</a></li>
+            <li><a href="{{url_for('auth.login')}}">Log In</a></li>
+        {% endif %}
+    </ul>
+</nav>
+
+<section class="content">
+    <header>
+        {% block header %}{% endblock %}
+    </header>
+    <!-- After the page title, and before the content, the template loops over each message returned by get_flashed_messages().
+      You used flash() in the views to show error messages, and this is the code that will display them.-->
+    {% for message in get_flashed_messages() %}
+        <div class="flash">{{ message }}</div>
+    {% endfor %}
+    {% block content %}{% endblock %}
+</section>
